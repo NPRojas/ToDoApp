@@ -13,14 +13,24 @@ import com.example.todolistapp.databinding.DialogAddTodoItemBinding
 
 
 class AddToDoItemDialog: DialogFragment() {
-
+    private lateinit var binding: DialogAddTodoItemBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var rootView: View = inflater.inflate(R.layout.dialog_add_todo_item, container, false)
-        return rootView
+        binding = DialogAddTodoItemBinding.inflate(layoutInflater)
+
+        binding.btnCancel.setOnClickListener{
+            dismiss()
+        }
+
+        binding.btnAdd.setOnClickListener {
+            // take the text input ... try data binding
+            // call the insert here?
+        }
+
+        return binding.root
     }
 }
 

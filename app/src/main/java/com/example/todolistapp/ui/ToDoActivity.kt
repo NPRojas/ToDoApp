@@ -16,6 +16,7 @@ import com.example.todolistapp.data.db.entities.ToDo
 import com.example.todolistapp.data.repositories.ToDoRepository
 import com.example.todolistapp.databinding.ActivityToDoBinding
 import com.example.todolistapp.other.ToDoItemAdapter
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class ToDoActivity : AppCompatActivity() {
 
@@ -48,9 +49,11 @@ class ToDoActivity : AppCompatActivity() {
             adapter.notifyDataSetChanged()
         }
 
-        binding.faAddBtn.setOnClickListener{
-            var dialog = AddToDoItemDialog()
+        // ATTN : Why do I have to find it by Id, shouldnt the id be enough
+        val faAddBtn: FloatingActionButton = findViewById(R.id.faAddBtn)
 
+        faAddBtn.setOnClickListener{
+            var dialog = AddToDoItemDialog()
             dialog.show(supportFragmentManager, "add to do dialog")
         }
 
