@@ -1,9 +1,6 @@
 package com.example.todolistapp.ui
 
-import android.graphics.Color
 import android.os.Bundle
-import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -26,7 +23,7 @@ class ToDoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityToDoBinding.inflate(layoutInflater)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_to_do)
+        setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -49,13 +46,16 @@ class ToDoActivity : AppCompatActivity() {
             adapter.notifyDataSetChanged()
         }
 
-        // ATTN : Why do I have to find it by Id, shouldnt the id be enough
-        val faAddBtn: FloatingActionButton = findViewById(R.id.faAddBtn)
+        binding.faAddBtn.setOnClickListener{
 
-        faAddBtn.setOnClickListener{
-            var dialog = AddToDoItemDialog()
-            dialog.show(supportFragmentManager, "add to do dialog")
+            AddToDoItemDialog(this,
+                object: AddDialogListener {
+                    override fun onAddButtonClicked(toDoItem: ToDo) {
+                        viewModel.insert(toDoItem)
+                    }
+                }).show()
         }
 
     }
+
 }
