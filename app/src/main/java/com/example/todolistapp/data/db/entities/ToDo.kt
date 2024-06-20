@@ -6,7 +6,9 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class ToDo (
-    @PrimaryKey val id: Int,
     @ColumnInfo(name = "task") val task: String,
     @ColumnInfo(name = "isComplete") val isComplete: Boolean
-)
+){
+    @PrimaryKey(autoGenerate = true)
+    var id: Int? = null
+}

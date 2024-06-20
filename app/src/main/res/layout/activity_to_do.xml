@@ -9,23 +9,20 @@
     tools:context=".ui.ToDoActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvToDo"
+        android:id="@+id/rvToDoItems"
         android:layout_width="370dp"
         android:layout_height="610dp"
-        android:layout_marginBottom="7dp"
-        app:layout_constraintBottom_toTopOf="@+id/ivAddTaskBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/ivAddTaskBtn"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="4dp"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/faAddBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:src="@drawable/ic_add"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvToDoItems" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
