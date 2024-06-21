@@ -17,7 +17,7 @@ class AddToDoItemDialog(context: Context, var addDialogListener: AddDialogListen
         setContentView(binding.root)
 
         binding.btnAdd.setOnClickListener{
-            // Get the values from the fragment to create the to do object
+            // Get the values from the dialog to create the to do object
             val task = binding.etTask.text.toString()
             val isComplete = false
 

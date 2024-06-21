@@ -10,11 +10,10 @@ import com.example.todolistapp.data.db.entities.ToDo
 
 @Dao
 interface ToDoDao {
-    // ATTN Do I need to change this to only get the task instead of all info?
+
     @Query("SELECT * FROM ToDo")
     fun getAllToDo(): LiveData<List<ToDo>>
 
-    // ATTN not sure if this is right?
     @Update
     suspend fun updateToDo(toDo: ToDo)
 
